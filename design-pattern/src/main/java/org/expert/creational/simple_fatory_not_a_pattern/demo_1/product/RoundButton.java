@@ -1,4 +1,4 @@
-package org.expert.creational.simple_fatory_pattern;
+package org.expert.creational.simple_fatory_not_a_pattern.demo_1.product;
 
 /**
  * 角色: 具体产品
@@ -8,7 +8,7 @@ package org.expert.creational.simple_fatory_pattern;
  */
 public class RoundButton extends Button {
     @Override
-    String generateShape() {
+    public String generateShape() {
         return "round";
     }
 

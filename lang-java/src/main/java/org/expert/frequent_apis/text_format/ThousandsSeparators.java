@@ -2,12 +2,10 @@ package org.expert.frequent_apis.text_format;
 
 
 import cn.hutool.core.util.NumberUtil;
-import kotlin.collections.Grouping;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.Locale;
 
 /**
@@ -142,7 +140,7 @@ public class ThousandsSeparators {
      * </table>
      * </blockquote>
      */
-    static String specificFormat2(Locale locale, String format, double val) {
+    public static String specificFormat2(Locale locale, String format, double val) {
         final NumberFormat nf = NumberFormat.getNumberInstance(locale);
         DecimalFormat formatter = (DecimalFormat) nf;
         formatter.applyPattern(format);

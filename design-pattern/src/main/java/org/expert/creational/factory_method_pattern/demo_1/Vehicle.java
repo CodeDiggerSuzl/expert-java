@@ -1,4 +1,4 @@
-package org.expert.creational.factory_method_pattern;
+package org.expert.creational.factory_method_pattern.demo_1;
 
 /**
  * 角色:抽象产品
@@ -6,9 +6,9 @@ package org.expert.creational.factory_method_pattern;
  * @author suzailong
  * @date 2022/6/1-5:23 下午
  */
-public interface Product {
+public interface Vehicle {
     /**
      * just a simple method
      */
-    void saySomeThing();
+    void price();
 }

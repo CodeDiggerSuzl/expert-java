@@ -1,7 +1,10 @@
 package org.expert;
 
 /**
- * @author suzl
+ * ${DESC}
+ *
+ * @author suzailong
+ * @date ${DATE}-${TIME}
  */
 public class Main {
     public static void main(String[] args) {

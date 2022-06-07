@@ -1,4 +1,4 @@
-package org.expert.creational.simple_fatory_pattern;
+package org.expert.creational.simple_fatory_not_a_pattern.demo_1.product;
 
 /**
  * 按钮抽象类
@@ -18,5 +18,5 @@ public abstract class Button {
      *
      * @return shape
      */
-    abstract String generateShape();
+   public abstract String generateShape();
 }

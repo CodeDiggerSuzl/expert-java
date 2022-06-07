@@ -1,4 +1,8 @@
-package org.expert.creational.simple_fatory_pattern;
+package org.expert.creational.simple_fatory_not_a_pattern.demo_1;
+
+import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.Button;
+import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.RoundButton;
+import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.SquareButton;
 
 /**
  * 简单工厂模式( Simple Factory Pattern)

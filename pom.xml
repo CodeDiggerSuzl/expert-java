@@ -9,6 +9,7 @@
         <module>common</module>
         <module>design-pattern</module>
         <module>wheels-building</module>
+        <module>alog-ds</module>
     </modules>
 
     <groupId>org.expert</groupId>

@@ -1,4 +1,4 @@
-package org.expert.creational.simple_fatory_pattern;
+package org.expert.creational.simple_fatory_not_a_pattern.demo_1.product;
 
 /**
  * @author suzailong
@@ -6,7 +6,7 @@ package org.expert.creational.simple_fatory_pattern;
  */
 public class SquareButton extends Button {
     @Override
-    String generateShape() {
+    public String generateShape() {
         return "square";
     }
 
