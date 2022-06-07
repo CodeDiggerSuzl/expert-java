@@ -83,14 +83,18 @@
             <version>3.12.4</version>
             <!--            <scope>test</scope>-->
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.2</version>
+        </dependency>
         <!--spock-->
 
         <!--引入spock 核心包-->
