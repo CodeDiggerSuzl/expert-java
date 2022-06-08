@@ -7,9 +7,9 @@ package org.expert.creational.builder_pattern.demo_1;
  * @date 2022/6/7-5:35 PM
  */
 public class Waiter {
-    private MealSetBuilder builder;
+    private AbstractMealSetBuilder builder;
 
-    public void setBuilder(MealSetBuilder builder) {
+    public void setBuilder(AbstractMealSetBuilder builder) {
         this.builder = builder;
     }
 

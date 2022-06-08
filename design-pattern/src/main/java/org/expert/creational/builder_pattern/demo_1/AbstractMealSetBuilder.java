@@ -6,7 +6,7 @@ package org.expert.creational.builder_pattern.demo_1;
  * @author suzailong
  * @date 2022/6/7-5:18 PM
  */
-public abstract class MealSetBuilder {
+public abstract class AbstractMealSetBuilder {
 
     abstract void buildDrink(String drink);
 

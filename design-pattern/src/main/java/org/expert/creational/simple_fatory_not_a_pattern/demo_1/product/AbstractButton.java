@@ -8,7 +8,7 @@ package org.expert.creational.simple_fatory_not_a_pattern.demo_1.product;
  * @author suzailong
  * @date 2022/6/1-3:41 PM
  */
-public abstract class Button {
+public abstract class AbstractButton {
     public void onClick() {
         System.out.println("basic click");
     }

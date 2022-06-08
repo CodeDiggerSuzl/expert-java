@@ -6,7 +6,7 @@ package org.expert.structural.adapter_pattern.object_adapter.demo_1;
  * @author suzailong
  * @date 2022/6/8-3:02 下午
  */
-public class Adapter extends Target {
+public class Adapter extends AbstractTarget {
 
     private final Adaptee adaptee;
 

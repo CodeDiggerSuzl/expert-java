@@ -9,7 +9,7 @@ import org.expert.creational.factory_method_pattern.demo_2.product.Pizza;
  * @author suzailong
  * @date 2022/6/8-12:08 AM
  */
-public class ChicagoPizzaStore extends PizzaStore {
+public class ChicagoAbstractPizzaStore extends AbstractPizzaStore {
     @Override
     Pizza createPizza(String type) {
         if ("pepper".equals(type)) {

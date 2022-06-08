@@ -2,7 +2,12 @@ package org.expert;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
@@ -16,10 +21,10 @@ import java.util.Map;
  * Json utils
  */
 public class JsonUtil {
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     static {
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     public static <T> void registerModule(Class<T> clazz) {
@@ -31,20 +36,20 @@ public class JsonUtil {
                 jgen.writeString(clazz.getCanonicalName());
             }
         });
-        objectMapper.registerModule(module);
+        OBJECT_MAPPER.registerModule(module);
     }
 
     public static <T> T readValue(String jsonStr, Class<T> clazz) throws IOException {
-        return objectMapper.readValue(jsonStr, clazz);
+        return OBJECT_MAPPER.readValue(jsonStr, clazz);
     }
 
     public static <T> T readValue(String jsonStr, JavaType javaType) throws IOException {
-        return objectMapper.readValue(jsonStr, javaType);
+        return OBJECT_MAPPER.readValue(jsonStr, javaType);
     }
 
     public static <T> T fromJson(String jsonStr, Class<T> clazz) {
         try {
-            return objectMapper.readValue(jsonStr, clazz);
+            return OBJECT_MAPPER.readValue(jsonStr, clazz);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -52,7 +57,7 @@ public class JsonUtil {
 
     public static <T> T fromJson(String jsonStr, JavaType javaType) {
         try {
-            return objectMapper.readValue(jsonStr, javaType);
+            return OBJECT_MAPPER.readValue(jsonStr, javaType);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -60,45 +65,45 @@ public class JsonUtil {
 
     public static String toJson(Object obj) {
         try {
-            return objectMapper.writeValueAsString(obj);
+            return OBJECT_MAPPER.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
 
     public static String writeJsonStr(Object obj) throws JsonProcessingException {
-        return objectMapper.writeValueAsString(obj);
+        return OBJECT_MAPPER.writeValueAsString(obj);
     }
 
     public static String writePrettyJsonStr(Object obj) throws JsonProcessingException {
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+        return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
     }
 
     public static void writeJsonStream(OutputStream out, Object obj) throws IOException {
-        objectMapper.writeValue(out, obj);
+        OBJECT_MAPPER.writeValue(out, obj);
     }
 
     public static <T> List<T> readListValue(String jsonStr, Class<T> clazz) throws IOException {
-        JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, clazz);
-        return objectMapper.readValue(jsonStr, javaType);
+        JavaType javaType = OBJECT_MAPPER.getTypeFactory().constructParametricType(List.class, clazz);
+        return OBJECT_MAPPER.readValue(jsonStr, javaType);
     }
 
     public static <T> List<T> fromListValue(String jsonStr, Class<T> clazz) {
         try {
-            JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, clazz);
-            return objectMapper.readValue(jsonStr, javaType);
+            JavaType javaType = OBJECT_MAPPER.getTypeFactory().constructParametricType(List.class, clazz);
+            return OBJECT_MAPPER.readValue(jsonStr, javaType);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public static <K, V> Map<K, V> readMapValue(String jsonStr, Class<K> kclazz, Class<V> vclazz) throws IOException {
-        JavaType javaType = objectMapper.getTypeFactory().constructParametricType(HashMap.class, kclazz, vclazz);
-        return objectMapper.readValue(jsonStr, javaType);
+        JavaType javaType = OBJECT_MAPPER.getTypeFactory().constructParametricType(HashMap.class, kclazz, vclazz);
+        return OBJECT_MAPPER.readValue(jsonStr, javaType);
     }
 
     public static ArrayNode readArray(String jsonStr) throws IOException {
-        JsonNode node = objectMapper.readTree(jsonStr);
+        JsonNode node = OBJECT_MAPPER.readTree(jsonStr);
         if (node.isArray()) {
             return (ArrayNode) node;
         }
@@ -106,7 +111,7 @@ public class JsonUtil {
     }
 
     public static JsonNode readNode(String jsonStr) throws IOException {
-        return objectMapper.readTree(jsonStr);
+        return OBJECT_MAPPER.readTree(jsonStr);
     }
 
 }

@@ -6,7 +6,7 @@ import org.expert.creational.factory_method_pattern.demo_2.product.Pizza;
  * @author suzailong
  * @date 2022/6/8-12:02 AM
  */
-public abstract class PizzaStore {
+public abstract class AbstractPizzaStore {
     /**
      * 子类对订单的处理保持一致
      */

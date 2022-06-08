@@ -1,6 +1,6 @@
 package org.expert.creational.simple_fatory_not_a_pattern.demo_1;
 
-import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.Button;
+import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.AbstractButton;
 
 /**
  * 角色: Client
@@ -17,10 +17,10 @@ import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.Button;
  */
 public class Client {
     public static void main(String[] args) {
-        Button button = ButtonFactory.createFactory(1);
+        AbstractButton abstractButton = ButtonFactory.createFactory(1);
 
-        String shape = button.generateShape();
+        String shape = abstractButton.generateShape();
         System.out.println(shape);
-        button.onClick();
+        abstractButton.onClick();
     }
 }

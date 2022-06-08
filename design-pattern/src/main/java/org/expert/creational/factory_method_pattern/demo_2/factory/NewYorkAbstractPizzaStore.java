@@ -8,7 +8,7 @@ import org.expert.creational.factory_method_pattern.demo_2.product.Pizza;
  * @author suzailong
  * @date 2022/6/8-12:08 AM
  */
-public class NewYorkPizzaStore extends PizzaStore {
+public class NewYorkAbstractPizzaStore extends AbstractPizzaStore {
     @Override
     Pizza createPizza(String type) {
         if ("cheese".equals(type)) {

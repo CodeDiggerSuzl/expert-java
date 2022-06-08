@@ -1,8 +1,8 @@
 package org.expert.creational.simple_fatory_not_a_pattern.demo_1;
 
-import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.Button;
-import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.RoundButton;
-import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.SquareButton;
+import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.AbstractButton;
+import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.RoundAbstractButton;
+import org.expert.creational.simple_fatory_not_a_pattern.demo_1.product.SquareAbstractButton;
 
 /**
  * 简单工厂模式( Simple Factory Pattern)
@@ -22,11 +22,11 @@ public class ButtonFactory {
     /**
      * 根据需求不同来创建不同的 Button 子类
      */
-    static Button createFactory(int type) {
+    static AbstractButton createFactory(int type) {
         if (type == 1) {
-            return new RoundButton();
+            return new RoundAbstractButton();
         } else {
-            return new SquareButton();
+            return new SquareAbstractButton();
         }
     }
 }

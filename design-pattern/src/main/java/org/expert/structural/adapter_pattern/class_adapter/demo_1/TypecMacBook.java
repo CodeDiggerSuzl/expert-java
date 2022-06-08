@@ -6,7 +6,7 @@ package org.expert.structural.adapter_pattern.class_adapter.demo_1;
  * @author suzailong
  * @date 2022/6/8-3:18 下午
  */
-public class TypeCMacBook {
+public class TypecMacBook {
 
     void plugInWithTypeC() {
         System.out.println("accept type c interface");

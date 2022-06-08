@@ -6,7 +6,7 @@ package org.expert.structural.adapter_pattern.class_adapter.demo_1;
  * @author suzailong
  * @date 2022/6/8-3:35 下午
  */
-public class Adapter extends TypeCMacBook implements UsbMouse {
+public class Adapter extends TypecMacBook implements UsbMouse {
 
     @Override
     public void pluginWithUsb() {

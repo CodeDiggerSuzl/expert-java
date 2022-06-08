@@ -9,7 +9,7 @@ package org.expert.creational.builder_pattern.demo_1;
 public class Client {
     public static void main(String[] args) {
         final Waiter waiter = new Waiter();
-        waiter.setBuilder(new KfcBuilder());
+        waiter.setBuilder(new KfcBuilderAbstract());
 
         final MealSet mealSet = waiter.prepareMeal();
         System.out.println(mealSet.toString());
