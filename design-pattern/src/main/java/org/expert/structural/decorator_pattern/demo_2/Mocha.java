@@ -8,19 +8,21 @@ package org.expert.structural.decorator_pattern.demo_2;
  */
 public class Mocha extends CondimentDecorator {
 
-    Beverage beverage;
+    Drinkable drinkable;
 
-    public Mocha(Beverage beverage) {
-        this.beverage = beverage;
+    public Mocha(Drinkable drinkable) {
+        this.drinkable = drinkable;
     }
 
     @Override
     public double cost() {
-        return .20 + beverage.cost();
+        double cost = drinkable.cost();
+        System.out.println("[decorator] mocha cost 0.20");
+        return .20 + cost;
     }
 
     @Override
     public String getDescription() {
-        return beverage.getDescription() + ", Mocha";
+        return drinkable.getDescription() + ", Mocha";
     }
 }
