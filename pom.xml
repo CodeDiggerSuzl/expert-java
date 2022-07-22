@@ -10,6 +10,7 @@
         <module>design-pattern</module>
         <module>wheels-building</module>
         <module>alog-ds</module>
+        <module>mq</module>
     </modules>
 
     <groupId>org.expert</groupId>
@@ -38,7 +39,12 @@
             <artifactId>fastjson</artifactId>
             <version>2.0.3</version>
         </dependency>
-
+        <!-- https://github.com/yomorun/hashids-java -->
+        <dependency>
+            <groupId>org.hashids</groupId>
+            <artifactId>hashids</artifactId>
+            <version>1.0.3</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
