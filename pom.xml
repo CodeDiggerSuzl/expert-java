@@ -12,6 +12,7 @@
         <module>alog-ds</module>
         <module>mq</module>
         <module>bug-tracing</module>
+        <module>local-cache</module>
     </modules>
 
     <groupId>org.expert</groupId>
