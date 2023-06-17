@@ -1,4 +1,10 @@
+import org.assertj.core.util.Lists;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.function.Function;
 
 /**
  * @author suzailong
@@ -38,4 +44,18 @@ public class DailyTest {
         System.out.println(flag ? a * b : c); // throws npe,cause a*b return an int type.
     }
 
+    @Test
+    public void builderTest() {
+        StringBuilder stringBuilder = new StringBuilder();
+        Assert.assertEquals(stringBuilder.toString(), "");
+    }
+
+    @Test
+    public void compareTest() {
+        String s = "400";
+        String s2 = "200";
+        ArrayList<String> list = Lists.newArrayList(s, s2);
+        list.sort(Comparator.comparing(Function.identity()));
+        System.out.println(list);
+    }
 }

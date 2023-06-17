@@ -13,6 +13,7 @@
         <module>mq</module>
         <module>bug-tracing</module>
         <module>local-cache</module>
+        <module>flow-control</module>
     </modules>
 
     <groupId>org.expert</groupId>
