@@ -1,15 +1,13 @@
 package org.expert;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -20,6 +18,7 @@ import java.util.Map;
 /**
  * Json utils
  */
+@Slf4j
 public class JsonUtil {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
@@ -113,5 +112,26 @@ public class JsonUtil {
     public static JsonNode readNode(String jsonStr) throws IOException {
         return OBJECT_MAPPER.readTree(jsonStr);
     }
+
+    public static boolean isJSONValid(String str) {
+        try {
+            JSON.parse(str);
+            return true;
+        } catch (JSONException ex) {
+            log.error("isJSONValid error", ex);
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        String s = "x";
+
+        if (isJSONValid(s)) {
+            System.out.println("true");
+        } else {
+            System.out.println("false");
+        }
+    }
+
 
 }
