@@ -76,8 +76,7 @@ interface Observer {
 
 // 具体观察者类
 class ConcreteObserver implements Observer {
-    private int observerState;
-    private ConcreteSubject subject;
+    private final ConcreteSubject subject;
 
     public ConcreteObserver(ConcreteSubject subject) {
         this.subject = subject;
@@ -85,7 +84,7 @@ class ConcreteObserver implements Observer {
     }
 
     public void update() {
-        observerState = subject.getState();
+        int observerState = subject.getState();
         System.out.println("Observer state updated to: " + observerState);
     }
 }

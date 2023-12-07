@@ -58,4 +58,10 @@ public class DailyTest {
         list.sort(Comparator.comparing(Function.identity()));
         System.out.println(list);
     }
+
+    @Test
+    public void testSubString() {
+        String s = "123456789";
+        System.out.println(s.substring(0, 3));
+    }
 }

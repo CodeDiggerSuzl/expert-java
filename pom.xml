@@ -105,8 +105,15 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.2</version>
         </dependency>
-        <!--spock-->
 
+        <!-- disruptor-->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.3.6</version>
+        </dependency>
+
+        <!--spock-->
         <!--引入spock 核心包-->
         <dependency>
             <groupId>org.spockframework</groupId>
