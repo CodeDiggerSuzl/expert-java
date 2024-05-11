@@ -1,30 +1,72 @@
 package org.expert.collections;
 
-import org.apache.commons.lang3.time.DateUtils;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.util.Lists;
+import org.expert.JsonUtil;
+import org.junit.Test;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
+
+@Slf4j
 public class SortDemo {
+    @Data
+    @AllArgsConstructor
+    static class Coupon {
 
-    public static void main(String[] args) {
-//        // final List<String> dateList = Lists.newArrayList("2023-01-01 15:12", "2022-01-01 17:12", "2022-01-01 11:12", "2022-12-01 22:12");
-//        // Lists.newArrayList("1,2,3,21").stream().reduce((a, b) -> a + "," + b).ifPresent(System.out::println);
-//        // ArrayList<String> dateList = Lists.newArrayList("1", "192", "3");
-//        ArrayList<Integer> dateList = Lists.newArrayList(1, 2, 2, 33, 4);
-//        Collections.sort(dateList);
-//        System.out.println(dateList);
-//        dateList.sort(Comparator.comparing(Function.identity()));
-//        System.out.println(dateList);
+        private String name;
 
-        Date date2 = new Date(1673488800000L);
-        System.out.println(date2);
+        private String price;
 
-        Date date = new Date();
-        Date date1 = DateUtils.addDays(date, 1);
-        long time = date.getTime();
-        System.out.println(time);
-        System.out.println(date1.getTime() - time);
+        private String desc;
+
+        private String available;
     }
 
+    /*--------------------------------------------------------------------------------------------------------------*/
+    private void getSortedCouponInfos(List<Coupon> driverCouponList) {
+        Collections.sort(driverCouponList, (o1, o2) -> {
+            BigDecimal o1Price = new BigDecimal(o1.getPrice());
+            BigDecimal o2Price = new BigDecimal(o2.getPrice());
+            if (o1.getDesc().contains("过期") && o2.getDesc().contains("过期")) {
+                return Integer.compare(o2Price.compareTo(o1Price), 0);
+            }
+            if (o1.getDesc().contains("过期")) {
+                return -1;
+            }
+            if (o2.getDesc().contains("过期")) {
+                return 1;
+            }
+            return Integer.compare(o2Price.compareTo(o1Price), 0);
+        });
+    }
 
+    /*--------------------------------------------------------------------------------------------------------------*/
+    @Test
+    public void test() {
+        Coupon c1 = new Coupon("1元即将过期可用", "1", "过期", "1");
+        Coupon c2 = new Coupon("2元即将过期可用", "2", "过期", "1");
+        Coupon c3 = new Coupon("3元非即将过期可用", "3", "-", "1");
+        Coupon c4 = new Coupon("5元非即将过期可用", "5", "-", "1");
+        Coupon c5 = new Coupon("5元非即将过期不可用", "5", "-", "0");
+        Coupon c6 = new Coupon("3元即将过期不可用", "3", "过期", "0");
+        Coupon c7 = new Coupon("6元即将过期不可用", "6", "过期", "0");
+        Coupon c8 = new Coupon("1元非即将过期不可用", "1", "-", "0");
+
+
+        ArrayList<Coupon> coupons = Lists.newArrayList(c1, c2, c3, c5, c4, c6, c7, c8);
+        getSortedCouponInfos(coupons);
+        coupons.sort(Comparator.comparing(Coupon::getAvailable).reversed());
+
+        System.out.println("JsonUtil.toJson(coupons) = " + JsonUtil.toJson(coupons));
+
+        System.out.println("coupons.stream().map(Coupon::getName).collect(Collectors.toList()) = " + coupons.stream().map(Coupon::getName).collect(Collectors.toList()));
+    }
 }

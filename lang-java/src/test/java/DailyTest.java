@@ -64,4 +64,11 @@ public class DailyTest {
         String s = "123456789";
         System.out.println(s.substring(0, 3));
     }
+
+    @Test
+    public void testJoin() {
+        ArrayList<String> strings = Lists.newArrayList("1---", "2", "3");
+        String join = String.join(",", strings);
+        System.out.println(join);
+    }
 }
