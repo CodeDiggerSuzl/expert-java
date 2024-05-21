@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +31,7 @@ public class SortDemo {
 
     /*--------------------------------------------------------------------------------------------------------------*/
     private void getSortedCouponInfos(List<Coupon> driverCouponList) {
-        Collections.sort(driverCouponList, (o1, o2) -> {
+        driverCouponList.sort((o1, o2) -> {
             BigDecimal o1Price = new BigDecimal(o1.getPrice());
             BigDecimal o2Price = new BigDecimal(o2.getPrice());
             if (o1.getDesc().contains("过期") && o2.getDesc().contains("过期")) {
@@ -69,4 +68,6 @@ public class SortDemo {
 
         System.out.println("coupons.stream().map(Coupon::getName).collect(Collectors.toList()) = " + coupons.stream().map(Coupon::getName).collect(Collectors.toList()));
     }
+
+
 }
