@@ -1,7 +1,9 @@
+import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Test;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -60,4 +62,44 @@ public class VoucherCodeGenerateDemo {
     public void nullTest() {
         System.out.println("Objects.equals(null,null) = " + Objects.equals(null, null));
     }
+
+    class PrizeInfo {
+        private String createTime;
+
+        public PrizeInfo(String createTime) {
+            this.createTime = createTime;
+        }
+
+        public String getCreateTime() {
+            return createTime;
+        }
+    }
+
+    @Test
+    public void test3() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // 只对已领奖时间排序 string 格式的时间,排序不对
+        // List<PrizeInfo> issuedPrizeInfoList = issuedFu.ture.get().stream().sorted(Comparator.comparing(PrizeInfo::getCreateTime).reversed()).collect(Collectors.toList());
+
+
+        List<PrizeInfo> issuedFutureList = new ArrayList<>();
+        issuedFutureList.add(new PrizeInfo("2025-01-09 16:05:23"));
+        issuedFutureList.add(new PrizeInfo("2025-01-09 15:32:51"));
+        issuedFutureList.add(new PrizeInfo("2025-01-09 16:14:51"));
+
+        //        issuedFutureList.sort(Comparator.comparing(PrizeInfo::getCreateTime).reversed());
+        issuedFutureList.sort((o1, o2) -> o1.getCreateTime().compareTo(o2.getCreateTime()));
+        // 修改排序方法
+        // List<PrizeInfo> issuedPrizeInfoList = issuedFutureList.stream()
+        //         .sorted(Comparator.comparing((PrizeInfo p) -> {
+        //             if (p.getCreateTime() == null) {
+        //                 return LocalDateTime.MIN;
+        //             } else {
+        //                 return LocalDateTime.parse(p.getCreateTime(), formatter);
+        //             }
+        //         }).reversed())
+        //         .collect(Collectors.toList());
+        System.out.println("  issuedPrizeInfoList = " + JSON.toJSONString(issuedFutureList));
+    }
+
 }
