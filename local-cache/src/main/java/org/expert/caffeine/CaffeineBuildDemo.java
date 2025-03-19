@@ -29,7 +29,5 @@ public class CaffeineBuildDemo {
         String man = currentStockCache.get("man");
         System.out.println(man);
         System.out.println(currentStockCache);
-
-
     }
 }
